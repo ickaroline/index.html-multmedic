@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Médica</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #174d86;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        /* Estilo das Abas */
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .tab:hover {
+            background-color: #ddd;
+        }
+
+        .active-tab {
+            background-color: #174d86;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Conteúdo das Abas */
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+
+        .active-content {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #f1f1f1;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .medico {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .medico img {
+            width: 250px;
+            height: auto;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="logo" class="logo" width="200px">
+        <h1>Clínica Mult Medic</h1>
+        <nav>
+            <ul>
+                <!-- Atualizado: Mudança do href para chamar openTab diretamente -->
+                <li><a href="javascript:void(0)" onclick="openTab('introducao')">Introdução</a></li>
+                <li><a href="javascript:void(0)" onclick="openTab('medicos')">Médicos</a></li>
+                <li><a href="javascript:void(0)" onclick="openTab('contato')">Contato</a></li>
+                <li><a href="javascript:void(0)" onclick="openTab('informacoes')">Informações Gerais</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="introducao">
+            <h2>Bem-vindo à Clínica Mult Medic</h2>
+            <p>Na Clínica Mult Medic, nosso objetivo é oferecer atendimento de qualidade e cuidar da sua saúde. <br>Com uma equipe de profissionais altamente qualificados, garantimos um atendimento humanizado e eficaz.</p>
+        </section>
+
+        <!-- Abas para Médicos, Contato e Informações -->
+        <div class="tabs">
+            <div class="tab active-tab" onclick="openTab('medicos')">Médicos</div>
+            <div class="tab" onclick="openTab('contato')">Contato</div>
+            <div class="tab" onclick="openTab('informacoes')">Informações Gerais</div>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div id="medicos" class="tab-content active-content">
+            <h2>Nossos Médicos</h2>
+            <div class="medico">
+                <h3>Dra. Catarine Braga</h3>
+                <p>Especialidade: Reumatologista</p>
+                <img src="img/catarine.png" alt="Dra Catarine" width="250px">
+            </div>
+            <div class="medico">
+                <h3>Dra. Margarida Medeiros</h3>
+                <p>Especialidade: Neuropediatra</p>
+                <img src="img/margarida.png" alt="Dra Margarida" width="250px">
+            </div>
+        </div>
+
+        <div id="contato" class="tab-content">
+            <h2>Contato</h2>
+            <p>Telefone: (85) 81996669 <br> 30366669 <br> 30236669 </p>
+            <p>Email: clinmultmedic@gmail.com</p>
+            <p>Endereço: Av. Santos Dumont, 5752, 8° andar sala 809 - Fortaleza, Ceará</p>
+        </div>
+
+        <div id="informacoes" class="tab-content">
+            <h2>Informações Gerais</h2>
+            <p>A Clínica Médica Exemplo oferece uma variedade de serviços para atender às suas necessidades de saúde. Estamos comprometidos em fornecer um ambiente acolhedor e seguro para todos os nossos pacientes.</p>
+            <ul>
+                <li>Horário de funcionamento: Segunda a Sexta, das 8h às 19h</li>
+                <li>Aceitamos planos de saúde e atendemos particular</li>
+                <li>Agendamentos podem ser feitos pelo telefone ou whatsapp</li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clínica Mult Medic. Todos os direitos reservados.</p>
+        <p>Siga-nos nas redes sociais:</p>
+        <ul>
+            <li><a href="https://www.instagram.com/clinicamultmedic?igsh=MW1sNWI1NG10enEwMQ==">Instagram</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Função para alternar entre as abas
+        function openTab(tabName) {
+            // Esconde todos os conteúdos das abas
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active-content'));
+
+            // Remove a classe active de todas as abas
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+            // Exibe o conteúdo da aba selecionada
+            document.getElementById(tabName).classList.add('active-content');
+
+            // Marca a aba selecionada como ativa
+            const activeTab = Array.from(tabs).find(tab => tab.textContent.toLowerCase() === tabName);
+            activeTab.classList.add('active-tab');
+        }
+
+        // Inicializa a aba "Médicos" como ativa ao carregar a página
+        window.onload = () => openTab('medicos');
+    </script>
+</body>
+</html>
